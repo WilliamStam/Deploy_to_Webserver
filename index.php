@@ -26,11 +26,8 @@ $siteID = "";
 $payload = json_decode($_REQUEST['payload']);
 
 
-$return = strtolower($payload->{'repository'}->{'url'});;
 
-$sql = "INSERT INTO logs (payload, errors, site) VALUES ('$return','','')";
-mysql_query($sql, $link) or die(mysql_error());
-exit();
+
 
 
 if (!count($row) || (!isset($row['ID']))){
@@ -46,7 +43,6 @@ if (!count($row) || (!isset($row['ID']))){
 	if (!$row['folder']){
 		$return['errors'][] = "Folder not defined for this key";
 	} else {
-		$push = $payload;
 		if (!$payload) {
 			$return['errors'][] = "Not a github push";
 		} else {
@@ -103,7 +99,7 @@ if (!count($row) || (!isset($row['ID']))){
 
 
 			if ($return['git']){
-				$url = $push['repository']['url'].".git";
+				$url = strtolower($payload->{'repository'}->{'url'}) .".git";
 
 
 
