@@ -100,6 +100,9 @@ if (!count($row) || (!isset($row['ID']))){
 				$url .= ".git";
 
 
+				$sql = "INSERT INTO logs (payload, errors, site) VALUES ('$url','','')";
+				mysql_query($sql, $link) or die(mysql_error());
+				exit();
 
 				// https://username:password@github.com/WilliamStam/DeployWebserver.git
 				// https: //github.com/WilliamStam/DeployWebserver
