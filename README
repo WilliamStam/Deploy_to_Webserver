@@ -1,1 +1,11 @@
-This file was created by JetBrains PhpStorm 5.0.2 for binding GitHub repository
+add a github webhook to
+
+<domain>/deploy?folder=<folder from root>&branch=<git branch>&key=<key>&username=<github username>&password=<github password>
+
+this will create the folder on the web server based on the folder. initiate a git repo and do a pull
+
+if the repo / folder exists it will just do the pull.
+
+---------------------------------------------
+
+reason for this... i greatly detest FTP
