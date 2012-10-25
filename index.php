@@ -27,9 +27,6 @@ $payload = json_decode($_REQUEST['payload']);
 
 
 
-
-
-
 if (!count($row) || (!isset($row['ID']))){
 	if ($key){
 		$return['errors'][] = "Key not found";
