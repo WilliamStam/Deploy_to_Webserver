@@ -14,7 +14,7 @@ $return = array();
 $return['errors'] = array();
 
 
-$link = mysql_connect('localhost', '', '');
+$link = mysql_connect('localhost', 'deploy', 'deployit');
 mysql_select_db('deploy', $link);
 
 $key = (isset($_GET['key'])) ? $_GET['key'] : "";
