@@ -23,12 +23,10 @@ $sql = "SELECT * FROM sites WHERE auth = '$key'";
 $result = mysql_query($sql, $link) or die(mysql_error());
 $row = mysql_fetch_assoc($result);
 $siteID = "";
-$payload = $_POST['payload']['repository'];
-$return = json_encode($payload);
+$payload = json_decode($_REQUEST['payload']);
 
-$sql = "INSERT INTO logs (payload, errors, site) VALUES ('$return','','')";
-mysql_query($sql, $link) or die(mysql_error());
-exit();
+
+
 
 if (!count($row) || (!isset($row['ID']))){
 	if ($key){
@@ -43,8 +41,8 @@ if (!count($row) || (!isset($row['ID']))){
 	if (!$row['folder']){
 		$return['errors'][] = "Folder not defined for this key";
 	} else {
-		$push = $_POST;
-		if (!isset($push['repository'])){
+		$push = $payload;
+		if (!$payload) {
 			$return['errors'][] = "Not a github push";
 		} else {
 
