@@ -117,6 +117,7 @@ if (!count($row) || (!isset($row['ID']))){
 					$url = str_replace("https://","https://$auth",$url);
 				}
 
+				// todo always an issue with the pull :/
 
 
 				$return['action'] = array(
