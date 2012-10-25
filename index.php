@@ -23,7 +23,7 @@ $sql = "SELECT * FROM sites WHERE auth = '$key'";
 $result = mysql_query($sql, $link) or die(mysql_error());
 $row = mysql_fetch_assoc($result);
 $siteID = "";
-$payload = $_POST['payload'];
+$payload = $_POST['payload']['repository']['url'];
 $return = json_encode($payload);
 
 $sql = "INSERT INTO logs (payload, errors, site) VALUES ('$return','','')";
