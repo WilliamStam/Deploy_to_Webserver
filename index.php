@@ -25,7 +25,11 @@ $row = mysql_fetch_assoc($result);
 $siteID = "";
 $payload = json_decode($_REQUEST['payload']);
 
+$return = $payload['repository']['url'];
 
+$sql = "INSERT INTO logs (payload, errors, site) VALUES ('$return','','')";
+mysql_query($sql, $link) or die(mysql_error());
+exit();
 
 
 if (!count($row) || (!isset($row['ID']))){
