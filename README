@@ -46,6 +46,6 @@ add a key and folder to the "sites" table. for instance
 key									folder
 098f6bcd4621d373cagty4e832627b4f6	test
 
-in the cfg set the base folder
+in the cfg set the base folder (by default it will use the parent folder of the script)
 
 it will then use the path <base>/test

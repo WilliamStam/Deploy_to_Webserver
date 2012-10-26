@@ -10,6 +10,12 @@ include_once("functions.php");
 $cfg=array();
 $cfg['base'] = dirname(dirname(__FILE__));
 
+//if (isset)
+if (file_exists("config.in.php")){
+	include_once("config.inc.php");
+}
+
+
 $return = array();
 $return['errors'] = array();
 
