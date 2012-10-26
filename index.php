@@ -29,6 +29,9 @@ $link = mysql_connect($cfg['db']['host'], $cfg['db']['username'], $cfg['db']['pa
 mysql_select_db($cfg['db']['database'], $link);
 
 $key = (isset($_GET['key'])) ? $_GET['key'] : "";
+$repo = (isset($_GET['repo'])) ? $_GET['repo'] : "";
+
+
 $sql = "SELECT * FROM sites WHERE auth = '$key'";
 
 $result = mysql_query($sql, $link) or die(mysql_error());
@@ -51,7 +54,7 @@ if (!count($row) || (!isset($row['ID']))){
 	if (!$row['folder']){
 		$return['errors'][] = "Folder not defined for this key";
 	} else {
-		if (!$payload) {
+		if (!$payload && $repo == '') {
 			$return['errors'][] = "Not a github push";
 		} else {
 
@@ -109,7 +112,12 @@ if (!count($row) || (!isset($row['ID']))){
 
 
 			if ($return['git']){
-				$url = ($payload->{'repository'}->{'url'});
+				if ($repo){
+					$url = $repo;
+				} else {
+					$url = ($payload->{'repository'}->{'url'});
+				}
+
 //$url = "https://github.com/WilliamStam/DeployWebserver";
 				$url .= ".git";
 
