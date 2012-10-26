@@ -5,8 +5,6 @@ cache/*
 media/*
 tmp/*
 .idea/*
-uploads/ab/*
-backups/*
 
 # Compiled source #
 ###################
