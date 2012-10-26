@@ -69,10 +69,6 @@ if (!count($row) || (!isset($row['ID']))){
 
 
 
-
-
-
-
 			$folder = $cfg['base'] . DIRECTORY_SEPARATOR . $values['folder'];
 			$return['folder'] = array(
 				"path"   => $folder,
@@ -121,8 +117,6 @@ if (!count($row) || (!isset($row['ID']))){
 				$url .= ".git";
 
 
-
-
 				$auth = "";
 				if ($values['auth']['username']){
 					$auth .= $values['auth']['username'].":";
@@ -135,8 +129,6 @@ if (!count($row) || (!isset($row['ID']))){
 					$auth = $auth."@";
 					$url = str_replace("https://","https://$auth",$url);
 				}
-
-
 
 				$return['pull'] =  shell_exec("git pull $url ".$values['branch']."  2>&1");
 			} else {
@@ -152,10 +144,6 @@ $return = serialize($return);
 $errors = serialize($errors);
 $sql = "INSERT INTO logs (payload, errors, site) VALUES ('$return','$errors','$siteID')";
 mysql_query($sql, $link) or die(mysql_error());
-test_array(array(
-	           "return"=> $return,
-	           "errors"=> $errors
-           )
-);
+test_array(array("return"=> $return,"errors"=> $errors ));
 
 ?>
