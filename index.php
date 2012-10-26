@@ -3,7 +3,7 @@
  * Date: 2012/10/25
  * Time: 2:10 PM
  */
-//if (isset)
+
 include_once("functions.php");
 
 
@@ -118,13 +118,11 @@ if (!count($row) || (!isset($row['ID']))){
 					$url = ($payload->{'repository'}->{'url'});
 				}
 
-//$url = "https://github.com/WilliamStam/DeployWebserver";
 				$url .= ".git";
 
 
 
-				// https://username:password@github.com/WilliamStam/DeployWebserver.git
-				// https: //github.com/WilliamStam/DeployWebserver
+
 				$auth = "";
 				if ($values['auth']['username']){
 					$auth .= $values['auth']['username'].":";
@@ -138,12 +136,9 @@ if (!count($row) || (!isset($row['ID']))){
 					$url = str_replace("https://","https://$auth",$url);
 				}
 
-				// todo always an issue with the pull :/
 
 
-				$return['action'] = array(
-					"pull"=> shell_exec("git pull $url ".$values['branch']."  2>&1")
-				);
+				$return['pull'] =  shell_exec("git pull $url ".$values['branch']."  2>&1");
 			} else {
 				$return['errors'][] = "Git not setup in the folder";
 			}
