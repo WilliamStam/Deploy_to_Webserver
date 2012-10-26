@@ -16,7 +16,7 @@ $cfg['db'] = array(
 	"password"=>""
 );
 //if (isset)
-if (file_exists("config.in.php")){
+if (file_exists("config.inc.php")){
 	include_once("config.inc.php");
 }
 
