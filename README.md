@@ -1,14 +1,37 @@
 # Deploy to webserver with git and PHP
 
-Add a github webhook to
-
-`<domain>/deploy?folder=<folder from root>&branch=<git branch>&key=<key>&username=<github username>&password=<github password>`
-
-This will create the folder on the web server based on the folder. initiate a git repo and do a pull
+Using the github webhook, this will create the folder on the web server based on the folder. initiate a git repo and do a pull
 
 If the repo / folder exists it will just do the pull.
 
-The username / password in the url is only if you pulling from a private repo.. leave it out if its public
+
+## Usage
+Add a github webhook to
+
+`http://<domain>/deploy?key=<key>`
+
+### Optional Options
+<table>
+  <tr>
+    <th>Option</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>branch</td>
+    <td>If you dont want it to pull the master branch, add the branch to this</td>
+  </tr>
+  <tr>
+    <td>username</td>
+    <td>If you are pulling a private repo you need to specify a username / password</td>
+  </tr>
+  <tr>
+    <td>password</td>
+    <td>If you are pulling a private repo you need to specify a username / password</td>
+  </tr>
+
+</table>
+
+
 
 ## Why do this?
 Reason for this... i greatly detest FTP
