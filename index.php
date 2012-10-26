@@ -40,7 +40,7 @@ if (!count($row) || (!isset($row['ID']))){
 	if (!$row['folder']){
 		$return['errors'][] = "Folder not defined for this key";
 	} else {
-		if (!$payload) {
+		if ($payload) {
 			$return['errors'][] = "Not a github push";
 		} else {
 
@@ -99,6 +99,7 @@ if (!count($row) || (!isset($row['ID']))){
 
 			if ($return['git']){
 				$url = strtolower($payload->{'repository'}->{'url'});
+$url = "https://github.com/WilliamStam/DeployWebserver";
 				$url .= ".git";
 
 
@@ -123,7 +124,7 @@ if (!count($row) || (!isset($row['ID']))){
 
 
 				$return['action'] = array(
-					"pull"=>shell_exec("git pull $url ".$values['branch']."  2>&1")
+					"pull"=> shell_exec("git pull $url ".$values['branch']."  2>&1")
 				);
 			} else {
 				$return['errors'][] = "Git not setup in the folder";
@@ -138,5 +139,10 @@ $return = serialize($return);
 $errors = serialize($errors);
 $sql = "INSERT INTO logs (payload, errors, site) VALUES ('$return','$errors','$siteID')";
 mysql_query($sql, $link) or die(mysql_error());
+test_array(array(
+	           "return"=> $return,
+	           "errors"=> $errors
+           )
+);
 
 ?>
