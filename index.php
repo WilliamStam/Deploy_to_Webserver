@@ -9,7 +9,12 @@ include_once("functions.php");
 
 $cfg=array();
 $cfg['base'] = dirname(dirname(__FILE__));
-
+$cfg['db'] = array(
+	"host"=>"localhost",
+	"database"=>"deploy",
+	"username"=>"",
+	"password"=>""
+);
 //if (isset)
 if (file_exists("config.in.php")){
 	include_once("config.inc.php");
@@ -20,8 +25,8 @@ $return = array();
 $return['errors'] = array();
 
 
-$link = mysql_connect('localhost', 'deploy', 'deployit');
-mysql_select_db('deploy', $link);
+$link = mysql_connect($cfg['db']['host'], $cfg['db']['username'], $cfg['db']['password']);
+mysql_select_db($cfg['db']['database'], $link);
 
 $key = (isset($_GET['key'])) ? $_GET['key'] : "";
 $sql = "SELECT * FROM sites WHERE auth = '$key'";
