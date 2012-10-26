@@ -40,7 +40,7 @@ if (!count($row) || (!isset($row['ID']))){
 	if (!$row['folder']){
 		$return['errors'][] = "Folder not defined for this key";
 	} else {
-		if ($payload) {
+		if (!$payload) {
 			$return['errors'][] = "Not a github push";
 		} else {
 
