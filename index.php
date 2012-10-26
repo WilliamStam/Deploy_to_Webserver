@@ -99,7 +99,7 @@ if (!count($row) || (!isset($row['ID']))){
 
 			if ($return['git']){
 				$url = strtolower($payload->{'repository'}->{'url'});
-$url = "https://github.com/WilliamStam/DeployWebserver";
+//$url = "https://github.com/WilliamStam/DeployWebserver";
 				$url .= ".git";
 
 
