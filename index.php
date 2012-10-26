@@ -84,6 +84,8 @@ if (!count($row) || (!isset($row['ID']))){
 
 			if (!$return['git']){
 				shell_exec('git init');
+			} else {
+				shell_exec('git reset --hard HEAD');
 			}
 
 			if (file_exists($folder)) {
@@ -121,7 +123,6 @@ if (!count($row) || (!isset($row['ID']))){
 
 
 				$return['action'] = array(
-					"reset"=>shell_exec('git reset --hard HEAD'),
 					"pull"=>shell_exec("git pull $url ".$values['branch']."  2>&1")
 				);
 			} else {
