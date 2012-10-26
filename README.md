@@ -49,3 +49,13 @@ key									folder
 in the cfg set the base folder (by default it will use the parent folder of the script)
 
 it will then use the path <base>/test
+
+create a file called "config.inc.php" in the root of this script.. include your values
+
+$cfg['base'] = dirname(dirname(__FILE__));
+$cfg['db'] = array(
+	"host"=>"localhost",
+	"database"=>"deploy",
+	"username"=>"",
+	"password"=>""
+);
